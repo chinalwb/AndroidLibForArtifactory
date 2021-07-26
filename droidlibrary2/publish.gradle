@@ -1,8 +1,8 @@
 apply plugin: 'maven-publish'
 
-def LIB_GROUP_ID = 'com.chenzhang2006.libraries'
+def LIB_GROUP_ID = 'com.chinalwb.libraries'
 def LIB_ARTIFACT_ID = 'droidlib2'
-def LIB_VERSION = '3.0.1'
+def LIB_VERSION = '3.0.3'
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -13,7 +13,7 @@ publishing {
     repositories {
         maven {
             name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/chenzhang2006/AndroidLibForArtifactory")
+            url = uri("https://maven.pkg.github.com/chinalwb/AndroidLibForArtifactory")
             credentials {
                 username = System.getenv('GITHUB_USER') ?: project.properties['GITHUB_USER']
                 password = System.getenv('GITHUB_PERSONAL_ACCESS_TOKEN') ?: project.properties['GITHUB_PERSONAL_ACCESS_TOKEN']
