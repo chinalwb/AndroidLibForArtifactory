@@ -1,4 +1,4 @@
-name: Check
+name: Clean Assemble and Publish
 
 on:
   push:
