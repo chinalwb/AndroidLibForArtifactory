@@ -23,6 +23,12 @@ jobs:
      
       - name: Assemble project
         run: ./gradlew :droidlibrary:assemble
-        
+      
+      - name: Check files
+        run: |
+          pwd
+          cd droidlibrary/build/outputs/aar
+          ls
+          
       - name: Publish lib to GitHub
         run: ./gradlew :droidlibrary:publishDroidlibPublicationToGithubPackagesRepository
