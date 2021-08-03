@@ -32,4 +32,8 @@ jobs:
           gradle --version
           
       - name: Publish lib to GitHub
-        run: gradle :droidlibrary:publishDroidlibPublicationToGithubPackagesRepository
+        env:
+          GITHUB_USERNAME: x-access-token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: 
+          gradle :droidlibrary:publishDroidlibPublicationToGithubPackagesRepository
