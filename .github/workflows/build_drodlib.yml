@@ -2,7 +2,7 @@ name: Clean Assemble and Publish
 
 on:
   push:
-    branches: [ tasks/#1 ]
+    branches: [ 'tasks/#1' ]
 
 jobs:
   build:
