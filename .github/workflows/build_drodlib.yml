@@ -10,6 +10,10 @@ jobs:
     timeout-minutes: 30
 
     steps:
+      - uses: actions/labeler@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Checkout
         uses: actions/checkout@v2
 
