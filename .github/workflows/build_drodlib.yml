@@ -2,7 +2,7 @@ name: Clean Assemble and Publish
 
 on:
   push:
-    branches: [ testlib ]
+    branches: [ dev ]
 
 jobs:
   build:
