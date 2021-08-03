@@ -2,8 +2,7 @@ name: Clean Assemble and Publish
 
 on:
   push:
-    branches:
-      - main
+    branches: [ master ]
 
 jobs:
   build:
