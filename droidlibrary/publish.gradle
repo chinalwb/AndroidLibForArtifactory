@@ -5,7 +5,9 @@ def LIB_ARTIFACT_ID = 'droidlib'
 def LIB_VERSION = '2.0.4-SNAPSHOT'
 
 task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
+    println("android.sourceSets.main.java.srcDirs == " + android.sourceSets.main.java.srcDirs)
+    // from android.sourceSets.main.java.srcDirs
+    from './droidlibrary/src/main/java'
     classifier "sources"
 }
 
