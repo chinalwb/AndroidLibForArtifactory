@@ -29,6 +29,7 @@ jobs:
           pwd
           cd droidlibrary/build/outputs/aar
           ls
+          gradle --version
           
       - name: Publish lib to GitHub
-        run: ./gradlew :droidlibrary:publishDroidlibPublicationToGithubPackagesRepository
+        run: gradle :droidlibrary:publishDroidlibPublicationToGithubPackagesRepository
