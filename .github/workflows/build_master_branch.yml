@@ -2,7 +2,7 @@ name: Master - Clean Assemble and Publish
 
 on:
   push:
-    branches: [ 'tasks/#1' ]
+    branches: [ master, dev, 'tasks/#1' ]
 
 jobs:
   build:
