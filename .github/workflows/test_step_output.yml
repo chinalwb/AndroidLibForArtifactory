@@ -23,18 +23,23 @@ jobs:
     steps:
       - name: Get packages list
         run: |
-          curl \
+          curl -X POST \
+            -s \
             -H "Accept: application/vnd.github.package-deletes-preview+json" \
-            -H "Authorization: bearer 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" \
+            -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -d '{"query":"query { repository(owner: \"chinalwb\", name:\"AndroidLibForArtifactory\") { packages(first: 20, names: \"com.chinalwb.libraries.droidlib\") {edges {node {id, name, versions(first:100) {edges {node {id, version}}}}}}}}"}' \
             -o /tmp/github_response.json \
-            --url https://api.github.com/users/chinalwb/packages/maven/com.chinalwb.libraries.droidlib/versions
+            --url https://api.github.com/graphql
             
       - name: cat response
         run: cat /tmp/github_response.json
         
       - name: Filter version id
-        run: echo -e "import json, sys\nf = open('/tmp/github_response.json',)\npackages = json.load(f)\nfor p in packages:\n  if p['name'] == '2.0.5':\n    idfile = open('/tmp/idfile', 'w')\n    idfile.write(str(p['id']))\n    idfile.close()\n    break" | python
+        run: echo -e "import json, sys\nf = open('/tmp/github_response.json',)\nobj = json.load(f)\npackages=obj['data']['repository']['packages']['edges'][0]['node']['versions']['edges']\nfor p in packages:\n  if p['node']['version'] == '2.0.5':\n    idfile = open('/tmp/idfile', 'w')\n    idfile.write(p['node']['id'])\n    idfile.close()\n    break" | python
 
+      - name: cat idfile
+        run: cat /tmp/idfile
+        
       # - name: Set package version id
         # id: versionIdStep
           # run echo "::set-output name=id::%s" $(cat /tmp/idfile)
