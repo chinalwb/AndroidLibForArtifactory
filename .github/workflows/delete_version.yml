@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - name: Delete package
-        uses: jackhowa/delete-github-package-versions@v0.4.9
+        uses: WPMedia/delete-github-package-versions@v0.4.10
         with:
-          version: 11274369 # The regex needs to be escaped!
+          version: '2.0.3' # The regex needs to be escaped!
           names: |
             com.chinalwb.libraries.droidlib
 
