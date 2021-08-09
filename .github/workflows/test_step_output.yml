@@ -25,7 +25,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run package get output
         run: |
-          echo "::sed-output name=id::value_here"
+          echo "::sed-output name=id::2\n"
         id: package
       - name: Echo package id
         run: echo "GET ==== ${{ steps.package.outputs.id }}"
