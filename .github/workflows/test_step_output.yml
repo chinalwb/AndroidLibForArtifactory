@@ -37,9 +37,9 @@ jobs:
           run echo "::set-output name=id::%s" $(cat /tmp/idfile)
 
       - name: Delete package version if exists
-        run: echo "package version id = " ${{ steps.versionIdStep.outputs.id }}
-        uses: actions/delete-package-versions@v1
+        # run: echo "package version id = " ${{ steps.versionIdStep.outputs.id }}
+        # uses: actions/delete-package-versions@v1
         if: steps.versionIdStep.outputs.id != ''
-          run: echo "FOUND!!"
+        run: echo "FOUND!!"
         # with:
           # package-version-ids: ${{ steps.versionIdStep.outputs.id }}
