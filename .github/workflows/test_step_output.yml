@@ -24,11 +24,14 @@ jobs:
       - name: Get packages list
         run: |
           curl \
-          	-H "Accept: application/vnd.github.package-deletes-preview+json" \
-          	-H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.package-deletes-preview+json" \
+            -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
             -o /tmp/github_response.json \
             --url https://api.github.com/users/chinalwb/packages/maven/com.chinalwb.libraries.droidlib/versions
             
+      - name: cat response
+        run: cat /tmp/github_response.json
+        
       - name: Filter version id
         run: echo -e "import json, sys\nf = open('/tmp/github_response.json',)\npackages = json.load(f)\nfor p in packages:\n  if p['name'] == '2.0.5':\n    idfile = open('/tmp/idfile', 'w')\n    idfile.write(str(p['id']))\n    idfile.close()\n    break" | python
 
