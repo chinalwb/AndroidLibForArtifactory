@@ -1,4 +1,4 @@
-name: Master - Clean Assemble and Publish
+name: Master - Delete package version
 
 on:
   push:
