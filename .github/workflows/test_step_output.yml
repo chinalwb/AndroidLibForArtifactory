@@ -25,6 +25,7 @@ jobs:
         run: |
           curl \
             -H "Accept: application/vnd.github.package-deletes-preview+json" \
+            -H "Authorization: bearer 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" \
             -o /tmp/github_response.json \
             --url https://api.github.com/users/chinalwb/packages/maven/com.chinalwb.libraries.droidlib/versions
             
