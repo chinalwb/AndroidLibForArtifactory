@@ -1,0 +1,20 @@
+name: Master - Delete package version
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Delete package
+        uses: WPMedia/delete-github-package-versions@v0.4.10
+        with:
+          version: '2.0.3' # The regex needs to be escaped!
+          names: |
+            com.chinalwb.libraries.droidlib
+
+      
