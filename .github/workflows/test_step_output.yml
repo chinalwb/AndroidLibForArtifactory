@@ -42,7 +42,7 @@ jobs:
         
       - name: Set package version id
         id: versionIdStep
-          run echo "::set-output name=id::%s" $(cat /tmp/idfile)
+        run: echo "::set-output name=id::%s" $(cat /tmp/idfile)
 
       - name: Delete package version if exists
         run: echo "package version id = " ${{ steps.versionIdStep.outputs.id }}
