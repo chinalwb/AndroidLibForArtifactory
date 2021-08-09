@@ -25,7 +25,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run package get output
         id: mystep
-        run: echo "::set-output name=id::201"
+        run: echo "::sed-output name=id::202"
+        #run: echo "::set-output name=id::201"
 
       - name: Echo package id
         run: echo ${{ steps.mystep.outputs.id }}
