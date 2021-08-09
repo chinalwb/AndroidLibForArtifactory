@@ -2,7 +2,7 @@ apply plugin: 'maven-publish'
 
 def LIB_GROUP_ID = 'com.chinalwb.libraries'
 def LIB_ARTIFACT_ID = 'droidlib'
-def LIB_VERSION = '2.0.5'
+def LIB_VERSION = '2.0.6'
 
 task sourceJar(type: Jar) {
     println("android.sourceSets.main.java.srcDirs == " + android.sourceSets.main.java.srcDirs)
