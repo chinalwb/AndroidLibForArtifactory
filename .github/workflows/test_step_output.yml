@@ -31,13 +31,16 @@ jobs:
             -o /tmp/github_response.json \
             --url https://api.github.com/graphql
             
-      - name: cat response
+      - name: Print cat response
         run: cat /tmp/github_response.json
-        
+      
+      - name: Create idfile
+        run: echo -e "import json, sys\nidfile = open('/tmp/idfile', 'w')\nidfile.close()" | python
+
       - name: Filter version id
         run: echo -e "import json, sys\nf = open('/tmp/github_response.json',)\nobj = json.load(f)\npackages=obj['data']['repository']['packages']['edges'][0]['node']['versions']['edges']\nfor p in packages:\n  if p['node']['version'] == '2.0.9-SNAPSHOT':\n    idfile = open('/tmp/idfile', 'w')\n    idfile.write(p['node']['id'])\n    idfile.close()\n    break" | python
 
-      - name: cat idfile
+      - name: Print cat idfile
         run: cat /tmp/idfile
         
       - name: Set package version id
