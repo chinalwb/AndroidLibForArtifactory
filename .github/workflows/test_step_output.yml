@@ -33,12 +33,12 @@ jobs:
         run: echo -e "import json, sys\nf = open('/tmp/github_response.json',)\npackages = json.load(f)\nfor p in packages:\n  if p['name'] == '2.0.5':\n    idfile = open('/tmp/idfile', 'w')\n    idfile.write(str(p['id']))\n    idfile.close()\n    break" | python
 
       - name: Set package version id
-	  	  id: versionIdStep
-	      run echo "::set-output name=id::%s" $(cat /tmp/idfile)
+        id: versionIdStep
+	run echo "::set-output name=id::%s" $(cat /tmp/idfile)
 
       - name: Delete package version if exists
         run: echo "package version id = " ${{ steps.versionIdStep.outputs.id }}
-	      uses: actions/delete-package-versions@v1
+	uses: actions/delete-package-versions@v1
         if: steps.versionIdStep.outputs.id != ''
         run: echo "FOUND!!"
         # with:
