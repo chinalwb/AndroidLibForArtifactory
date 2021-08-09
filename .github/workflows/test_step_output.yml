@@ -1,4 +1,3 @@
-# This is a basic workflow to help you get started with Actions
 
 name: Test step output
 
@@ -22,14 +21,25 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
-      - name: Run package get output
-        id: mystep
-        run: echo "::set-output name=id::205"
-        #run: echo "::set-output name=id::201"
+      - name: Get packages list
+        run: |
+          curl \
+          	-H "Accept: application/vnd.github.package-deletes-preview+json" \
+          	-H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -o /tmp/github_response.json \
+            --url https://api.github.com/users/chinalwb/packages/maven/com.chinalwb.libraries.droidlib/versions
+            
+      - name: Filter version id
+        run: echo -e "import json, sys\nf = open('/tmp/github_response.json',)\npackages = json.load(f)\nfor p in packages:\n  if p['name'] == '2.0.5':\n    idfile = open('/tmp/idfile', 'w')\n    idfile.write(str(p['id']))\n    idfile.close()\n    break" | python
 
-      - name: Echo package id
-        run: echo ${{ steps.mystep.outputs.id }}
-      
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+      - name: Set package version id
+	  	  id: versionIdStep
+	      run echo "::set-output name=id::%s" $(cat /tmp/idfile)
 
+      - name: Delete package version if exists
+        run: echo "package version id = " ${{ steps.versionIdStep.outputs.id }}
+	      uses: actions/delete-package-versions@v1
+        if: steps.versionIdStep.outputs.id != ''
+        run: echo "FOUND!!"
+        # with:
+          # package-version-ids: ${{ steps.versionIdStep.outputs.id }}
