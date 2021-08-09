@@ -20,9 +20,9 @@ jobs:
     steps:
       - name: get output
         id: step1
-        run: echo "::set-output name=id::2"
+        run: echo "::set-output name=pid::2"
       - id: step2
-        run: echo ${{steps.step1.outputs.test}}
+        run: echo ${{steps.step1.outputs.pid}}
       
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 
