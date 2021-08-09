@@ -13,7 +13,7 @@ jobs:
       - name: Delete package
         uses: jackhowa/delete-github-package-versions@v0.4.9
         with:
-          version-pattern: "2.0.3" # The regex needs to be escaped!
+          version: "2.0.3" # The regex needs to be escaped!
           names: |
             com.chinalwb.libraries.droidlib
 
