@@ -26,6 +26,7 @@ jobs:
       - name: Run package get output
         id: mystep
         run: echo "::set-output name=id::201"
+
       - name: Echo package id
         run: echo ${{steps.mystep.outputs.id}}
       
