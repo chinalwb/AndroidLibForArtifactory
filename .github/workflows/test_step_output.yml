@@ -28,4 +28,4 @@ jobs:
           echo "::sed-output name=id::value_here"
         id: package
       - name: Echo package id
-        run: echo "GET ==== ${{ steps.package.outputs.* }}"
+        run: echo "GET ==== ${{ steps.package.outputs.id }}"
