@@ -12,8 +12,13 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-        
+  
 jobs:
+  weekday_job:
+    runs-on: ubuntu-latest
+    env:
+      SDK_VERSION: 2.0.7
+  
   DeleteExistingPackage:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -38,7 +43,7 @@ jobs:
 
       - name: Define version to delete
         id: versionNameStep
-        run: echo "::set-output name=version::2.0.6"
+        run: echo "::set-output name=version::${{ env.SDK_VERSION }}"
         
       - name: Filter version id
         # run: echo -e "import json, sys\nf = open('/tmp/github_response.json',)\nobj = json.load(f)\npackages=obj['data']['repository']['packages']['edges'][0]['node']['versions']['edges']\nfor p in packages:\n  if p['node']['version'] == '2.0.9-SNAPSHOT':\n    idfile = open('/tmp/idfile', 'w')\n    idfile.write(p['node']['id'])\n    idfile.close()\n    break" | python
@@ -93,7 +98,7 @@ jobs:
       - name: Upload mapping file
         uses: actions/upload-artifact@v2
         with:
-          name: mapping-for-v2.0.6
+          name: mapping-for-v${{ env.SDK_VERSION }}
           path: droidlibrary/build/outputs/mapping/release
           
       - name: Publish lib to GitHub
