@@ -85,7 +85,7 @@ jobs:
           cd droidlibrary/build/outputs/aar
           pwd
           ls
-          cd ../mapping
+          cd ..
           pwd
           ls
           gradle --version
