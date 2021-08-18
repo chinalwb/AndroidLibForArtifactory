@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="Theme.AndroidLibForArtifactory.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AndroidLibForArtifactory.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.AndroidLibForArtifactory.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
