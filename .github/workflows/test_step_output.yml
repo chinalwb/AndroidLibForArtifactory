@@ -83,8 +83,18 @@ jobs:
         run: |
           pwd
           cd droidlibrary/build/outputs/aar
+          pwd
+          ls
+          cd ..
+          pwd
           ls
           gradle --version
+          
+      - name: Upload mapping file
+        uses: actions/upload-artifact@v2
+        with:
+          name: mapping-for-v2.0.6
+          path: droidlibrary/build/outputs/mapping/release
           
       - name: Publish lib to GitHub
         env:
