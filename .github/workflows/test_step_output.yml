@@ -14,15 +14,20 @@ on:
 
   
 jobs:
-  weekday_job:
+  SetSDKVersion:
     runs-on: ubuntu-latest
     env:
       SDK_VERSION: 2.0.7
+    steps:
+      - name: Set SDK Version
+        run: echo "Set SDK Version = ${{ env.SDK_VERSION }}"
+      
   
   DeleteExistingPackage:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    needs: SetSDKVersion
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Get packages list
