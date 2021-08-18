@@ -12,12 +12,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  
+env:
+  SDK_VERSION: 2.0.7
+
 jobs:
   SetSDKVersion:
     runs-on: ubuntu-latest
-    env:
-      SDK_VERSION: 2.0.7
     steps:
       - name: Set SDK Version
         run: echo "Set SDK Version = ${{ env.SDK_VERSION }}"
