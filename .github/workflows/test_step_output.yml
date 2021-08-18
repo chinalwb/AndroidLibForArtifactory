@@ -79,6 +79,13 @@ jobs:
       - name: Assemble project
         run: ./gradlew :droidlibrary:assemble
       
+      - name: Upload mapping file
+        uses: actions/upload-artifact@v2
+        with:
+          name: mapping-for-v2.0.6
+          path: droidlibrary/build/outputs/mapping
+
+      
       - name: Check files
         run: |
           pwd
