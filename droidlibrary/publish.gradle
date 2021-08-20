@@ -1,8 +1,8 @@
 apply plugin: 'maven-publish'
 
 def LIB_GROUP_ID = 'com.chinalwb.libraries'
-def LIB_ARTIFACT_ID = 'droidlib'
-def LIB_VERSION = '2.0.7-SNAPSHOT'
+def LIB_ARTIFACT_ID = 'test'
+def LIB_VERSION = '0.0.3'
 
 task sourceJar(type: Jar) {
     println("android.sourceSets.main.java.srcDirs == " + android.sourceSets.main.java.srcDirs)
@@ -16,8 +16,8 @@ publishing {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/chinalwb/GitHubMavenRepo")
             credentials {
-                username = System.getenv('GITHUB_ACTOR') //?: project.properties['GITHUB_USER']
-                password = System.getenv('GITHUB_TOKEN') // ?: project.properties['GITHUB_PERSONAL_ACCESS_TOKEN']
+                username = System.getenv('GITHUB_USERNAME') ?: project.properties['GITHUB_USERNAME']
+                password = System.getenv('GITHUB_TOKEN') ?: project.properties['GITHUB_TOKEN']
             }
         }
         maven {
