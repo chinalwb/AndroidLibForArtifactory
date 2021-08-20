@@ -67,6 +67,7 @@ jobs:
         if: steps.versionIdStep.outputs.id != ''
         with:
           package-version-ids: ${{ steps.versionIdStep.outputs.id }}
+          token: ${{ secrets.MY_PAT }}
           
           
    
