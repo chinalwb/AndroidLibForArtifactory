@@ -110,5 +110,5 @@ jobs:
         run: gradle :droidlibrary:publish
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PAT }}
-          GITHUB_USERNAME: chinalwb
+          GITHUB_ACTOR: chinalwb
           
