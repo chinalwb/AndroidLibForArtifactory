@@ -13,8 +13,8 @@ task sourceJar(type: Jar) {
 publishing {
     repositories {
 
-        println("username = " + project.findProperty("gpr.user") )
-        println("key = " + project.findProperty("gpr.key") )
+        println("username = " + System.getenv("GITHUB_ACTOR") )
+
         maven {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/chinalwb/GitHubMavenRepo")
