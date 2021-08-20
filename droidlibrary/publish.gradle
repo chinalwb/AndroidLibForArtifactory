@@ -19,8 +19,8 @@ publishing {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/chinalwb/GitHubMavenRepo")
             credentials {
-                username = System.getenv('GITHUB_USERNAME') ?: project.properties['gpr.user']
-                password = System.getenv('GITHUB_TOKEN') ?: project.properties['gpr.key']
+                username = System.getenv('GITHUB_USERNAME') ?: project.properties['GITHUB_USERNAME']
+                password = System.getenv('GITHUB_TOKEN') ?: project.properties['GITHUB_TOKEN']
             }
         }
         maven {
