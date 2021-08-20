@@ -35,7 +35,7 @@ jobs:
           curl -X POST \
             -s \
             -H "Accept: application/vnd.github.package-deletes-preview+json" \
-            -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: bearer ${{ secrets.MY_PAT }}" \
             -d '{"query":"query { repository(owner: \"chinalwb\", name:\"GitHubMavenRepo\") { packages(first: 20, names: \"com.chinalwb.libraries.test\") {edges {node {id, name, versions(first:100) {edges {node {id, version}}}}}}}}"}' \
             -o /tmp/github_response.json \
             --url https://api.github.com/graphql
