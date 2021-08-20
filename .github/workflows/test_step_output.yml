@@ -109,6 +109,6 @@ jobs:
       - name: Publish lib to GitHub
         run: gradle :droidlibrary:publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: x-access-token
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
+          GITHUB_ACTOR: chinalwb
           
