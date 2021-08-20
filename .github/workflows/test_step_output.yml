@@ -107,7 +107,7 @@ jobs:
           path: droidlibrary/build/outputs/mapping/release
           
       - name: Publish lib to GitHub
-        run: gradle :droidlibrary:publish
+        run: gradle :droidlibrary:publishDroidlibPublicationToGithubPackagesRepository
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PAT }}
           GITHUB_ACTOR: chinalwb
